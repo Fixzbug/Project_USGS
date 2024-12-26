@@ -1,0 +1,62 @@
+*** Settings ***
+Resource    ${CURDIR}/../../../Import/Path_import.robot    # robotcode: ignore
+
+*** Keywords ***
+
+# Login with level
+SET FEATURE - GO TO - PAGE REQUEST WAIVE - BY USER LEVEL
+    [Arguments]    ${user_level}
+    Request_waive_01_page.PAGE REQUEST WAIVE - INPUT USENAME AND PASSWORD BY USER LEVEL    ${user_level}      
+    Request_waive_01_page.PAGE REQUEST WAIVE - [CLICK] - LINK
+    Request_waive_01_page.PAGE REQUEST WAIVE - [WAIT] - [VERIFY] PAGE
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    WELCOME - USER - ${user_level}
+
+
+SET FEATURE - SELECT MENU - PAGE REQUEST WAIVE
+    [Arguments]    ${menu}    ${sub_menu}
+    Request_waive_01_page.PAGE REQUEST WAIVE - [CLICK] - [MENU]    ${menu} 
+    Request_waive_01_page.PAGE REQUEST WAIVE - [CLICK] - [SUB MENU]    ${sub_menu} 
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    MENU
+
+
+SET FEATURE - SELECT MENU - REQUEST TYPE - PAGE REQUEST WAIVE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [WAIT] - [VERIFY] PAGE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [SELCET] - [FRAME] IFRAME
+    Request_waive_01_page.PAGE REQUEST WAIVE - [SELCET] - [DROPDOWN] REQUEST TYPE  
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    REQUEST TYPE
+
+
+# input zone step 1
+SET FEATURE - INPUT CRITERIA SEARCH - REQUEST TYPE - PAGE REQUEST WAIVE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [INPUT] - [TEXT] CONTRACT NO
+    Request_waive_01_page.PAGE REQUEST WAIVE - [SELECT] - [DROPDOWN] BUSINESS
+    Request_waive_01_page.PAGE REQUEST WAIVE - [INPUT] - [TEXT] ID CARD
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABEL] CONTRACT NO 
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABEL] ID CARD
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABEL] BUSINESS  
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    REQUEST TYPE
+
+
+# btn approve
+SET FEATURE - CLICK - APPROVE - PAGE REQUEST WAIVE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [CLICK] - [BTN] APPROVE
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    CLICK - SEARCH
+
+
+# verify zone
+SET FEATURE - VERIFY - REQUEST PAGE - PAGE REQUEST WAIVE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [UNSELCET] - [FRAME] UNIFRAME
+    Request_waive_01_page.PAGE REQUEST WAIVE - [SELCET] - [FRAME] IFRAME
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] REQUEST TYPE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] CUSTOMER ID
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] CUSTOMER NAME
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] BUSINESS
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] CONTRACT NO
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] REQUEST DATE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] REQUESTER
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] TEAM
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] OD STATUS
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] TOTAL O/S BALANCE
+    Request_waive_01_page.PAGE REQUEST WAIVE - [VERIFY] - [LABELS] TOTAL PENALTY
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    VERIFY - REQUEST PAGE
+

@@ -1,0 +1,366 @@
+*** Settings ***
+Resource    ${CURDIR}/../../../Import/Path_import.robot    # robotcode: ignore
+
+
+*** Keywords ***
+SET FEATURE - TYPE - 07 - GO TO - PAGE INBOX - BY USER LEVEL
+    [Arguments]    ${user_level}
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - INPUT USENAME AND PASSWORD BY USER LEVEL    ${user_level}      
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [CLICK] - LINK
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    WELCOME - USER - ${user_level}
+
+
+SET FEATURE - TYPE - 07 - SELECT MENU - PAGE REQUEST WAIVE
+    [Arguments]    ${menu}    ${sub_menu}
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [CLICK] - [MENU]    ${menu} 
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [CLICK] - [SUB MENU]    ${sub_menu} 
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    MENU
+
+
+### 07 : Negotiation Special discount (Nor-OD) ###
+# Select - 07 : Negotiation Special discount (Nor-OD)
+SET FEATURE - SELECT REQUEST TYPE - PAGE REQUEST WAIVE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [CLICK] - [DROPDOWN] - [07 : Negotiation Special discount (Nor-OD)]
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    REQUEST_TYPE
+    Request_waive_07_page.PAGE REQUEST WAIVE - [CLICK] - [BUTTON] - APPROVE
+
+
+# Request Waive - Step input id, business and contract no
+SET FEATURE - INPUT REQUEST - PAGE REQUEST WAIVE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - ID CARD [07 : Negotiation Special discount (Nor-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - CONTRACT NO [07 : Negotiation Special discount (Nor-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [DROPDOWN] - BUSINESS [07 : Negotiation Special discount (Nor-OD)]
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    REQUEST
+    Request_waive_07_page.PAGE REQUEST WAIVE - [CLICK] - [BUTTON] - APPROVE
+
+
+# Input Data - 07 : Negotiation Special discount (Nor-OD)
+SET FEATURE - INPUT DATA - PAGE REQUEST WAIVE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - NUMBER OF CHILD [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - LAST SALARY [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [CLICK] - [DROPDOWN] - CUSTOMER STATUS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+
+
+# Verify Value - 07 : Negotiation Special discount (Nor-OD)
+VERIFY FEATURE - DATA VALUE - PAGE REQUEST WAIVE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - REQUEST TYPE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - REQUEST NO. [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - REQUESTER [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - REQUEST DATE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CUSTOMER ID [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CONTRACT NO [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CUSTOMER NAME [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CALL CENTER [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - AGE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - TEAM [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - OD STATUS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CONTRACT TYPE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CONTRACT DATE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - BUSINESS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - WO DATE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - CONTRACT STATUS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - TIME OF PAYMENT [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - DUE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - TIMES OF PENALTY [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - REQUEST TIMES [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    # Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - LAST REQUEST NO [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]    # ไม่มีปุ๋มให้กรอก
+    BuiltIn.Run Keyword And Continue On Failure    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE] - MINIMUM/INSTALL: [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+
+
+
+# Verify Title - 07 : Negotiation Special discount (Nor-OD)
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - HERDER [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REQUEST TYPE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REQUEST NO. [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REQUESTER [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REQUEST DATE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CUSTOMER ID [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CUSTOMER NO [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CUSTOMER NAME [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CALL CENTER [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - AGE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TEAM [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - NUMBER OF CHILD [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - OD STATUS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - LAST SALARY [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CONTRACT TYPE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CUSTOMER STATUS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CONTRACT DATE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - BUSINESS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - WO DATE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CONTRACT STATUS [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TIME OF PAYMENT [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DUE [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TIMES OF PENALTY [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REQUEST TIMES [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - LAST REQUEST NO [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - MINIMUM/INSTALL: [07 : NEGOTIATION SPECIAL DISCOUNT (NOR-OD)]
+
+
+
+### Negotiate Detail ###
+# Verify Title - Negotiate Detail - 1. Entry negotiate discount detail
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TOTALS TERM [NEGOTIATE DETAIL] - [1. Entry negotiate discount detail]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TOTALS PAID AMOUNT [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - FIRST DUE DATE [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - START CAL. DATE [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    DATA TITLE 1. - REQUEST PAGE
+
+
+# Input Data - Negotiate Detail - 1. Entry negotiate discount detail
+SET FEATURE - INPUT DATA - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - TOTALS TERM [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - TOTALS PAID AMOUNT [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [DROPDOWN] - FIRST DUE DATE INDEX 2 [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - START CAL. DATE [NEGOTIATE DETAIL] - [1. ENTRY NEGOTIATE DISCOUNT DETAIL]  
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    INPUT DATA 1. - REQUEST PAGE
+    
+
+
+# Get Text [Value] - OD Screen
+PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN - [TYPE: 07]
+    PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN [1.1 PAYMENT HISTORY] - [TYPE: 07]
+    PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN [1.2 DISCOUNT DETAIL] - [TYPE: 07]
+    PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN [1.3 PROFIT DETAIL (AUTO CAL.)] - [TYPE: 07]
+
+# Get Text [Value] - OD Screen [1.1 Payment History]
+PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN [1.1 PAYMENT HISTORY] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - LOAN AMT OF CUSTOMER [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - LOAN AMT OF NEW CONTRACT [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - CONTRACT AMOUNT [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - PAID TERM [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - TOTAL PAID AMT (OLD CONTRACT) [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - TOTAL PAID AMT (NEW CONTRACT) [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OS (AS OF CLOSING DATE) [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD AMOUNT [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - PENALTY AMOUNT [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - CLOSING (SYD) [OD SCREEN] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - WO AMOUNT [OD SCREEN] - [1.1 PAYMENT HISTORY]
+
+# Get Text [Value] - OD Screen [1.2 Discount Detail]
+PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN [1.2 DISCOUNT DETAIL] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - CUSTOMER WILL PAY [OD SCREEN] - [1.2 DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF. FROM CLOSING AMOUNT [OD SCREEN] - [1.2 DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF. FROM CLOSING PERCENT [OD SCREEN] - [1.2 DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF. FROM WO (OD) AMOUNT [OD SCREEN] - [1.2 DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF. FROM WO (OD) PERCENT [OD SCREEN] - [1.2 DISCOUNT DETAIL]
+
+# Get Text [Value] - OD Screen [1.3 Profit detail (Auto cal.)]
+PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - OD SCREEN [1.3 PROFIT DETAIL (AUTO CAL.)] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - TOTAL RECEIVED [OD SCREEN] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF FROM LOAN AMOUNT [OD SCREEN] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF FROM OS [OD SCREEN] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [GET-TEXT] - [VALUE] - DIFF FROM WO [OD SCREEN] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    07_NEGOTIATION_SPECIAL_DISCOUNT_(NOR-OD)_01
+
+
+
+# Verify Title - 1.1 Payment History
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - LOAN AMT OF CUSTOMER [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - LOAN AMT OF NEW CONTRACT [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CONTRACT AMOUNT [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - PAID TERM [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TOTAL PAID AMT (OLD CONTRACT) [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TOTAL PAID AMT (NEW CONTRACT) [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - OS (AS OF CLOSING DATE) [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - OD AMOUNT [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - PENALTY AMOUNT [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CLOSING (SYD) [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - WO AMOUNT [NEGOTIATE DETAIL] - [1.1 PAYMENT HISTORY]
+
+
+# Verify Title - 1.2 Discount Detail
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [1.2 DISCOUNT DETAIL] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - CUSTOMER WILL PAY [NEGOTIATE DETAIL] - [1.2 DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DIFF. FROM CLOSING [NEGOTIATE DETAIL] - [1.2 DISCOUNT DETAIL]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DIFF. FROM WO (OD) [NEGOTIATE DETAIL] - [1.2 DISCOUNT DETAIL]
+
+
+# Verify Title - 1.3 Profit detail (Auto cal.) 
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [1.3 PROFIT DETAIL (AUTO CAL.)] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TOTAL RECEIVED [NEGOTIATE DETAIL] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DIFF FROM LOAN AMOUNT [NEGOTIATE DETAIL] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DIFF FROM OS [NEGOTIATE DETAIL] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DIFF FROM WO [NEGOTIATE DETAIL] - [1.3 PROFIT DETAIL (AUTO CAL.)]
+
+
+# Verify Title - 2. Entry detail by Term#, Time#
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - TERM# [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - PAID DATE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - PAID AMOUNT [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+
+
+# Input Data - Negotiate Detail - 2. Entry detail by Term#, Time#
+SET FEATURE - INPUT DATA - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - TERM# START - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - TERM# END - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - PAID DATE - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - PAID AMOUNT - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [CLICK] - [BUTTON] - ADD [2. ENTRY DETAIL BY TERM#, TIME#]
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    07_NEGOTIATION_SPECIAL_DISCOUNT_(NOR-OD)_02
+
+
+# Verify Title Table - 2. Entry detail by Term#, Time#
+VERIFY FEATURE - DATA TITLE TABLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - NO [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - TERM# [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - MIN DUE DATE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - MAX DUE DATE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - TIME# [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - PAID DATE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - PAID AMOUNT [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - DELETE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+
+
+# Verify Value Table - 2. Entry detail by Term#, Time#
+VERIFY FEATURE - DATA VALUE TABLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE][TABLE] - TOTAL TERM [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    # Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE][TABLE] - TOTAL PAID AMOUNT [NEGOTIATE DETAIL] - [2. ENTRY DETAIL BY TERM#, TIME#]
+    
+
+# Verify Title - 3.1 Entry other debt
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - OTHER DEBT [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - AMOUNT [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+
+
+# Input Data - Negotiate Detail - 3.1 Entry other debt
+SET FEATURE - INPUT DATA - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - OTHER DEBT - [3.1 ENTRY OTHER DEBT]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - AMOUNT - [3.1 ENTRY OTHER DEBT]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [CLICK] - [BUTTON] - ADD [3.1 ENTRY OTHER DEBT]
+
+
+# Verify Title Table - 3.1 Entry other debt
+VERIFY FEATURE - DATA TITLE TABLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - NO [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - OTHER DEBT [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - AMOUNT [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE][TABLE] - DELETE [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+
+
+# Verify Value Table - 3.1 Entry other debt
+VERIFY FEATURE - DATA VALUE TABLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [VALUE][TABLE] - TOTAL AMOUNT [NEGOTIATE DETAIL] - [3.1 ENTRY OTHER DEBT]
+
+
+# Verify Title - 3.2 Entry other ...
+VERIFY FEATURE - DATA TITLE - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER] - [TYPE: 07]
+    # Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - LAST CONTACT THIRD PARTY [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    # Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - LAST CONTACT CUSTOMER [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - HAVE JOB [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - WHO REQUEST [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - DISCOUNT CAMPAIGN [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - WHO PAID [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - SOURCE OF FUND [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REASON [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - REASON NOTE [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - SEND TO [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [VERIFY] - [TITLE] - NOTE [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+
+
+# Input Data - Negotiate Detail - 3.2 Entry other ...
+SET FEATURE - INPUT DATA - PAGE REQUEST WAIVE [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER] - [TYPE: 07]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - LAST CONTACT THIRD PARTY [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - LAST CONTACT CUSTOMER [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - HAVE JOB [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - WHO REQUEST [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - DISCOUNT CAMPAIGN [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - WHO PAID [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - SOURCE OF FUND [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - REASON [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - REASON NOTE [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Request_waive_07_page.PAGE REQUEST WAIVE - [INPUT] - NOTE [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    07_NEGOTIATION_SPECIAL_DISCOUNT_(NOR-OD)_03
+
+
+# verify table
+SET FEATURE - TYPE - 07 - VERIFY - SEND TO - PAGE REQUEST WAIVE
+    [Arguments]    ${user_level}
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [DROPDOWN] - SEND TO [NEGOTIATE DETAIL] - [3.2 ENTRY OTHER]    ${user_level}
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    SEND TO
+
+
+# btn approve
+SET FEATURE - TYPE - 07 - CLICK - APPROVE - PAGE REQUEST WAIVE
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [CLICK] - [BTN] APPROVE
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    CLICK - SEARCH
+    
+
+# verify title popup
+SET FEATURE - TYPE - 07 - VERIFY - APPROVE POPUP - PAGE REQUEST WAIVE
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [VERIFY] - [TITLE] APPROVE 
+
+
+SET FEATURE - TYPE - 07 - CLICK - APPROVE POPUP - CLICK OK - PAGE REQUEST WAIVE
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    APPROVE POPUP - CLICK OK
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [VERIFY] - [POPUP] APPROVE - [CLICK] OK
+
+
+# save data to excel zone
+SET FEATURE - TYPE - 07 - SAVE DATA - REQUSET NO - PAGE REQUEST WAIVE
+    Request_waive_07_page.PAGE REQUEST WAIVE - TYPE 07 - [GET] - [DATA] REQUEST NO - [SAVE] EXCEL
+    Capture_Screen.CUSTOM CAPTURE WITH SYSTEM AND CASE    WORKFLOW    SAVE DATA - REQUSET NO
+
+
+SET FEATURE - TYPE - 07 - SAVE DATA TO EXCEL - BY STATE
+    [Documentation]    # check pass and fail pass 1 time / fail 3 time
+
+    IF  '${point}' == '1'    # ทำได้จบ flow
+
+        ${count}    BuiltIn.Evaluate    1    # fix 1 time
+        BuiltIn.Set Global Variable    ${count}    
+        
+        # write row, column -> Request
+        Common_feature.SET - DATA TO EXCEL    excel_name=${Excel_name}    sheet_name=${type_07}     row=${Rows}    column=6    data=${result_request_no}    # Rows global ,colum fix ,data global
+
+        # write row, column -> Request
+        # Common_feature.SET - DATA TO EXCEL    excel_name=${Excel_name}    sheet_name=${type_08}    row=${Rows}    column=88    data=${result_request_no}    # req no.
+
+        # write row, column -> Request
+        Common_feature.SET - DATA TO EXCEL    excel_name=${Excel_name}    sheet_name=${type_07}    row=${Rows}    column=96    data=Request    # Rows global ,colum fix ,data global
+
+        # click logout button
+        Common_keyword.UNSELECT IFRAME   
+        Common_keyword.WAITING FOR DATA UPDATE    1s 
+        Common_keyword.CLICK ELEMENT WHEN ELEMENT IS VISIBLE     ${btn_signout} 
+        BuiltIn.Log    COUNT->${count}    WARN
+
+    ELSE IF  '${point}' == '0'    # ทำผิด ให้ save error แล้วกดกลับ
+        
+        ${count}    BuiltIn.Evaluate    ${count} + 1    # counter 3 time for check fail 3 time process
+        BuiltIn.Set Global Variable    ${count}        
+
+        # write row, column -> Request
+        Common_feature.SET - DATA TO EXCEL    excel_name=${Excel_name}    sheet_name=${type_07}    row=${Rows}    column=6    data=${result_request_no}    # Rows global ,colum fix ,data global
+
+        # write row, column -> Request
+        Common_feature.SET - DATA TO EXCEL    excel_name=${Excel_name}    sheet_name=${type_07}    row=${Rows}    column=96    data=FAIL    # Rows global ,colum fix ,data global
+ 
+        # click back button
+        Common_keyword.CLICK ELEMENT WHEN ELEMENT IS VISIBLE     ${btn_back}    10s
+        BuiltIn.Log    COUNT FAIL->${count}    WARN
+ 
+        # IF  '${count}' == '3'       # counter fail 3 time just logout end process
+        #     # click logout button
+        #     Common_keyword.UNSELECT IFRAME   
+        #     Common_keyword.WAITING FOR DATA UPDATE    1s 
+        #     Common_keyword.CLICK ELEMENT WHEN ELEMENT IS VISIBLE     ${btn_signout} 
+        #     BuiltIn.Log    LOGOUT AT FAIL->${count}    WARN
+        # END
+
+        # click logout button
+        Common_keyword.UNSELECT IFRAME   
+        Common_keyword.WAITING FOR DATA UPDATE    1s 
+        Common_keyword.CLICK ELEMENT WHEN ELEMENT IS VISIBLE     ${btn_signout}  
+        BuiltIn.Log    LOGOUT AT FAIL->${count}    WARN
+
+        ${nextcase}    BuiltIn.Set Variable    False
+        BuiltIn.Set Global Variable    ${nextcase} 
+
+    END
+
