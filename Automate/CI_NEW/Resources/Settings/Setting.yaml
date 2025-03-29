@@ -1,5 +1,0 @@
-# shared_drive_path = อย่าลืมเปลี่ยนที่อยู่ Path ทุกครั้งที่มีการเปลี่ยน Location ของเครื่องที่ใช้งาน
-share_drive: D:/CI_Robot/Repositories/CI_NEW/Excel_sync_robot_files/
-
-excel_file:
-  EXCELS: NEW.xlsx
