@@ -65,28 +65,44 @@ async function displayEarthquakeInfo(data) {
 
         const place = properties.place || "N/A";
         const magnitude = properties.mag || "N/A";
-        const time = properties.time ? dayjs(properties.time).utc().format('DD/MM/YYYY HH:mm:ss') : "N/A";
+        // const time = properties.time ? dayjs(properties.time).utc().format('DD/MM/YYYY HH:mm:ss') : "N/A";
+        const time = properties.time ? dayjs(properties.time).local().format('DD/MM/YYYY HH:mm:ss') : "N/A";
 
         const message = `🌍 Earthquake Alert!\n` +
             `📍 Location: ${place}\n` +
             `💥 Magnitude: ${magnitude}\n` +
-            `🕒 Time: ${time} UTC\n` +
+            `🕒 Time: ${time} \n` +
             `📌 Coordinates: [Lat=${coordinates[1]}, Lon=${coordinates[0]}](https://www.google.com/maps?q=${coordinates[1]},${coordinates[0]})\n` +
             `📏 Depth: ${coordinates[2]} km`;
 
         console.log(message);
         console.log("-".repeat(40));
-
         await sendTelegramNotification(message); // ✅ ส่งเข้า Telegram
     }
 }
+
+// 🚀 เรียกใช้งาน
+// (async () => {
+//     const now = dayjs().utc();
+//     const startTime = now.startOf('day').format(); // 00:00:00 UTC
+//     const endTime = now.format();                 // เวลาปัจจุบัน UTC
+//     const minMagnitude = 4.0;
+//     const limit = 5;
+//     const data = await fetchEarthquakeData({
+//         startTime,
+//         endTime,
+//         minMagnitude,
+//         limit
+//     });
+//     await displayEarthquakeInfo(data);
+// })();
 
 // ⏰ ตั้งเวลาให้ทำงานทุก 10 นาที
 setInterval(async () => {
     const now = dayjs().utc();
     const startTime = now.startOf('day').format();
     const endTime = now.format();
-    const minMagnitude = 5.0;
+    const minMagnitude = 4.0;
     const limit = 5;
 
     const data = await fetchEarthquakeData({
