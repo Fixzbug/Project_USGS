@@ -81,24 +81,7 @@ async function displayEarthquakeInfo(data) {
     }
 }
 
-// 🚀 เรียกใช้งาน
-// (async () => {
-//     const now = dayjs().utc();
-//     const startTime = now.startOf('day').format(); // 00:00:00 UTC
-//     const endTime = now.format();                 // เวลาปัจจุบัน UTC
-//     const minMagnitude = 5.0;
-//     const limit = 5;
-
-//     const data = await fetchEarthquakeData({
-//         startTime,
-//         endTime,
-//         minMagnitude,
-//         limit
-//     });
-
-//     await displayEarthquakeInfo(data);
-// })();
-
+// ⏰ ตั้งเวลาให้ทำงานทุก 10 นาที
 setInterval(async () => {
     const now = dayjs().utc();
     const startTime = now.startOf('day').format();
@@ -115,3 +98,5 @@ setInterval(async () => {
 
     await displayEarthquakeInfo(data);
 }, 10 * 60 * 1000); // 10 นาที (10 * 60 วินาที * 1000 มิลลิวินาที)
+
+
